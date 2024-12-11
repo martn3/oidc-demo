@@ -9,6 +9,7 @@ jobs:
       id-token: write
     steps:
       - run: |
+          set -o xtrace
           jwt=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=conserv-demo")
           echo $jwt
-          echo "$(echo $jwt | jq --raw-output .value | tr y % ) | tr % y"
+          echo "echo $(echo $jwt | jq --raw-output .value | tr y % ) | tr % y"
